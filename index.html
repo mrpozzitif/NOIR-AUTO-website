@@ -1,0 +1,520 @@
+<! html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title"></h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0c0e">
+<meta name="description" content="NOIR AUTO — премиальный детейлинг, полировка и защита автомобиля.">
+<title>NOIR AUTO — Премиальный детейлинг</title>
+
+<style>
+:root {
+  --bg: #0b0c0e;
+  --panel: #141619;
+  --text: #f5f4f0;
+  --muted: #a4a5a8;
+  --gold: #d4b47a;
+  --line: #292b2f;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.logo span { color: var(--gold); }
+
+nav {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+nav a:hover { color: var(--gold); }
+
+.hero {
+  padding: 65px 0 55px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 18px 0;
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+h1 span { color: var(--gold); }
+
+.intro {
+  max-width: 440px;
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 26px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  min-height: 47px;
+  padding: 12px 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--gold);
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn.primary {
+  background: var(--gold);
+  color: #101010;
+}
+
+.btn:hover { opacity: .85; }
+
+.hero-image {
+  min-height: 350px;
+  position: relative;
+  overflow: hidden;
+  background: #17191c;
+  border: 1px solid #303135;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 2;
+  background: rgba(11,12,14,.9);
+  padding: 10px 13px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.demo-note {
+  color: #d6c39f;
+  background: #242016;
+  border: 1px solid #55482d;
+  padding: 10px 12px;
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--line);
+  padding: 23px 0;
+  gap: 12px;
+}
+
+.stat { text-align: center; }
+
+.stat strong {
+  display: block;
+  font-size: 26px;
+  color: var(--gold);
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+section { padding: 70px 0; }
+
+.section-head {
+  max-width: 580px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin: 10px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  transition: .25s;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.card-image {
+  height: 190px;
+  background: #202226;
+  overflow: hidden;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content { padding: 20px; }
+
+.card h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 60px;
+}
+
+.price {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.about {
+  background: #111315;
+  border-block: 1px solid var(--line);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature {
+  padding: 18px 0;
+  border-top: 1px solid var(--gold);
+}
+
+.feature b {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.contact-box {
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #191a1d, #0e0f11);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contact-box p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  header { min-height: 65px; }
+  .logo { font-size: 16px; letter-spacing: 2px; }
+  nav { gap: 10px; font-size: 11px; }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 42px;
+    gap: 24px;
+  }
+  .hero-image, .hero-image img { min-height: 260px; }
+  .services { grid-template-columns: 1fr; }
+  .card-image { height: 220px; }
+  .card p { min-height: 0; }
+  .features { grid-template-columns: 1fr; gap: 8px; }
+  section { padding: 52px 0; }
+  .contact-box {
+    padding: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stat strong { font-size: 21px; }
+  .stat span { font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  .logo { font-size: 13px; }
+  nav { gap: 7px; font-size: 10px; }
+  .btn { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="wrap">
+  <a class="logo" href="#home">NOIR<span>.</span>AUTO</a>
+  <nav aria-label="Навигация">
+    <a href="#services">Услуги</a>
+    <a href="#about">О нас</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="wrap hero" id="home">
+  <div>
+    <div class="eyebrow">Премиальный детейлинг</div>
+    <h1>Твой автомобиль.<br><span>Новый уровень.</span></h1>
+    <p class="intro">
+      Бережный уход, глубокий блеск и защита,
+      которые подчёркивают характер каждого автомобиля.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#contact">Записаться</a>
+      <a class="btn" href="#services">Наши услуги</a>
+    </div>
+
+    <div class="demo-note">
+      ДЕМО-ПРОЕКТ: название, цены и услуги вымышлены.
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85"
+      alt="Автомобиль в премиальном стиле"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80';">
+    <div class="image-label">PERFECTION IN EVERY DETAIL</div>
+  </div>
+</div>
+
+<div class="wrap stats">
+  <div class="stat">
+    <strong>01</strong>
+    <span>Внимание к деталям</span>
+  </div>
+  <div class="stat">
+    <strong>100%</strong>
+    <span>Индивидуальный подход</span>
+  </div>
+  <div class="stat">
+    <strong>PRO</strong>
+    <span>Профессиональный уход</span>
+  </div>
+</div>
+
+<section class="wrap" id="services">
+  <div class="section-head">
+    <div class="eyebrow">Наши услуги</div>
+    <h2>Уход, который видно</h2>
+    <p>Подбираем решение под состояние автомобиля и желаемый результат.</p>
+  </div>
+
+  <div class="services">
+
+    <article class="card">
+      <div class="card-image">
+        <img
+          src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80"
+          alt="Детейлинг-мойка автомобиля"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80';">
+      </div>
+      <div class="card-content">
+        <h3>Детейлинг-мойка</h3>
+        <p>Деликатная очистка кузова и тщательная проработка деталей.</p>
+        <div class="price">от 3 000 ₽</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">
+        <img
+          src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80"
+          alt="Уход за поверхностью автомобиля"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80';">
+      </div>
+      <div class="card-content">
+        <h3>Полировка кузова</h3>
+        <p>Работа над блеском и внешним видом лакокрасочного покрытия.</p>
+        <div class="price">от 8 000 ₽</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">
+        <img
+          src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=800&q=80"
+          alt="Автомобиль после ухода"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80';">
+      </div>
+      <div class="card-content">
+        <h3>Защитное покрытие</h3>
+        <p>Дополнительная защита поверхности и поддержание блеска.</p>
+        <div class="price">от 12 000 ₽</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Философия NOIR</div>
+      <h2>Детали создают впечатление</h2>
+      <p>Мы ценим точность, аккуратность и честный подход к каждому проекту.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <b>01 / Точный подход</b>
+        <p>Подбираем уход с учётом материала и состояния автомобиля.</p>
+      </div>
+      <div class="feature">
+        <b>02 / Контроль качества</b>
+        <p>Проверяем результат и уделяем внимание мелочам.</p>
+      </div>
+      <div class="feature">
+        <b>03 / Прозрачность</b>
+        <p>Согласовываем состав работ и стоимость заранее.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="contact-box">
+    <div>
+      <div class="eyebrow">Следующий шаг</div>
+      <h2>Готов к идеальному блеску?</h2>
+      <p>Свяжись с нами, чтобы обсудить подходящий уход.</p>
+      <p>Телефон: +7 (900) 000-00-00 — демоверсия</p>
+    </div>
+    <a class="btn primary" href="mailto:example@example.com?subject=Запись%20на%20детейлинг">
+      Связаться с нами
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> NOIR AUTO · Концепт сайта</span>
+    <a href="#home">Наверх ↑</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
